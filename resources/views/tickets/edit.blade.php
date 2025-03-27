@@ -140,21 +140,7 @@
                 instantUpload: false,
                 allowMultiple: true,
                 server: {
-                    process: {
-                        url: '/upload',
-                        method: 'POST',
-                        onload: (response) => response.key
-                    },
-                    load: (source, load, error, progress, abort) => {
-                        fetch(source)
-                            .then(res => res.blob())
-                            .then(load)
-                            .catch(error);
-                    },
-                    revert: (uniqueFileId, load, error) => {
-                        console.log('Revert file:', uniqueFileId);
-                        load();
-                    }
+
                 }
             });
             @foreach ($ticket->files as $file)
