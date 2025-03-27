@@ -27,11 +27,7 @@ class TicketsDataTable extends DataTable
                 return $ticket->priority ? $ticket->priority->name : '';
             })
             ->addColumn('action', function ($ticket) {
-                $actions = '';
-                if (
-                    auth()->user()->hasRole('Administrator') ||
-                    (auth()->user()->hasRole('Agent') && $ticket->agent_id == auth()->id())
-                ) {
+                $actions = ''; {
                     $actions .= '<a href="' . route('tickets.edit', $ticket->id) . '" class="btn btn-sm btn-warning">Edit</a> ';
                     $actions .= '<button class="btn btn-sm btn-danger delete-ticket" data-id="' . $ticket->id . '">Delete</button>';
                 }
